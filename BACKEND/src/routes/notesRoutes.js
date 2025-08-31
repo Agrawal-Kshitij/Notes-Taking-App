@@ -1,11 +1,18 @@
 import express from 'express';
-import { getAllNotes, createNote } from '../controllers/notesController.js';
+import {
+  createNote,
+  deleteNote,
+  getAllNotes,
+  getNoteById,
+  updateNote,
+} from "../controllers/notesController.js";
 
 const router = express.Router();
+
 router.get("/", getAllNotes);
-router.post('/', createNote);
-//   app.post("/api/notes", (req, res) => {
-//     res.status(201).json({message:"successfully created a note"});
-//   });
+router.get("/:id", getNoteById);
+router.post("/", createNote);
+router.put("/:id", updateNote);
+router.delete("/:id", deleteNote);
 
 export default router;
